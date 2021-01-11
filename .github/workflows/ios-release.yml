@@ -10,7 +10,7 @@ on:
       - "README.md"      
 jobs:
   build:
-    runs-on: macos-10.15
+    runs-on: self-hosted
     env:
       BUILDTYPE: Release
       HOMEBREW_NO_AUTO_UPDATE: 1
