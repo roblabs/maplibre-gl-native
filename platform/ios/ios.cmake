@@ -75,6 +75,7 @@ target_sources(
         ${PROJECT_SOURCE_DIR}/platform/default/src/mbgl/util/png_writer.cpp
         ${PROJECT_SOURCE_DIR}/platform/default/src/mbgl/util/thread_local.cpp
         ${PROJECT_SOURCE_DIR}/platform/default/src/mbgl/util/utf.cpp
+        ${PROJECT_SOURCE_DIR}/platform/default/src/mbgl/util/webp_reader.cpp
 )
 
 target_include_directories(
