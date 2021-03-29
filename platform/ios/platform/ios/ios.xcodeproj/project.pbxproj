@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -406,6 +406,7 @@
 		CAFB3C15234505D500399265 /* MGLMapSnapshotter_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = CAFB3C13234505D500399265 /* MGLMapSnapshotter_Private.h */; };
 		CF75A91522D85E860058A5C4 /* MGLLoggingConfiguration.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF75A91422D85E860058A5C4 /* MGLLoggingConfiguration.mm */; };
 		CF75A91622D85E860058A5C4 /* MGLLoggingConfiguration.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF75A91422D85E860058A5C4 /* MGLLoggingConfiguration.mm */; };
+		D79E409B2611762B004DFBA6 /* libwebp in Frameworks */ = {isa = PBXBuildFile; productRef = D79E409A2611762B004DFBA6 /* libwebp */; };
 		DA00FC8E1D5EEB0D009AABC8 /* MGLAttributionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = DA00FC8C1D5EEB0D009AABC8 /* MGLAttributionInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA00FC8F1D5EEB0D009AABC8 /* MGLAttributionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = DA00FC8C1D5EEB0D009AABC8 /* MGLAttributionInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA00FC901D5EEB0D009AABC8 /* MGLAttributionInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA00FC8D1D5EEB0D009AABC8 /* MGLAttributionInfo.mm */; };
@@ -1344,6 +1345,7 @@
 				DA0BDD202407C12600DAA576 /* libmbgl-core.a in Frameworks */,
 				CAB369E5237471D600592F74 /* libz.tbd in Frameworks */,
 				DA35D9CE240920AB0013ECB0 /* libmbgl-vendor-csscolorparser.a in Frameworks */,
+				D79E409B2611762B004DFBA6 /* libwebp in Frameworks */,
 				358B3DBB2359EA0F007BEB26 /* libmbgl-vendor-icu.a in Frameworks */,
 				DA35D9D1240920B60013ECB0 /* libmbgl-vendor-parsedate.a in Frameworks */,
 				358B3DB92359E4A0007BEB26 /* libsqlite3.tbd in Frameworks */,
@@ -2574,6 +2576,9 @@
 			dependencies = (
 			);
 			name = dynamic;
+			packageProductDependencies = (
+				D79E409A2611762B004DFBA6 /* libwebp */,
+			);
 			productName = framework;
 			productReference = DA8847D21CBAF91600AB86E3 /* Mapbox.framework */;
 			productType = "com.apple.product-type.framework";
@@ -2715,6 +2720,9 @@
 				gl,
 			);
 			mainGroup = DA1DC9411CB6C1C2006E619F;
+			packageReferences = (
+				D79E40992611762B004DFBA6 /* XCRemoteSwiftPackageReference "libwebp-Xcode" */,
+			);
 			productRefGroup = DA1DC94B1CB6C1C2006E619F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -4177,6 +4185,25 @@
 			defaultConfigurationName = RelWithDebInfo;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D79E40992611762B004DFBA6 /* XCRemoteSwiftPackageReference "libwebp-Xcode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/libwebp-Xcode";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D79E409A2611762B004DFBA6 /* libwebp */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D79E40992611762B004DFBA6 /* XCRemoteSwiftPackageReference "libwebp-Xcode" */;
+			productName = libwebp;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DA1DC9421CB6C1C2006E619F /* Project object */;
 }
