@@ -12,6 +12,8 @@ on:
       - ".gitignore"              
     branches:
       - master
+      - metal-support
+      - gh-actions
   pull_request:
     branches:
       - master  
