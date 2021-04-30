@@ -25,7 +25,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: [self-hosted, macos, X64]
     env:
       BUILDTYPE: Debug
       HOMEBREW_NO_AUTO_UPDATE: 1
