@@ -6,9 +6,7 @@ on:
     tags-ignore:
       - '**'
     paths-ignore:
-      - "platform/android/**" 
-      - ".github/**"  
-      - "README.md"
+      - "platform/android/**"
       - ".gitignore"              
     branches:
       - master
