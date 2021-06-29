@@ -408,6 +408,8 @@
 		CF75A91622D85E860058A5C4 /* MGLLoggingConfiguration.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF75A91422D85E860058A5C4 /* MGLLoggingConfiguration.mm */; };
 		D717FE7A25F1955A0054E06E /* iosapp_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D717FE7925F1955A0054E06E /* iosapp_UITests.swift */; };
 		D717FECB25F19F520054E06E /* XCTestCase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D717FECA25F19F520054E06E /* XCTestCase+Extensions.swift */; };
+		D718328F268A3E300022AF69 /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = D718328D268A3E190022AF69 /* style.json */; };
+		D7183291268A3EF20022AF69 /* zurich_switzerland.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = D7183290268A3EF20022AF69 /* zurich_switzerland.mbtiles */; };
 		D7E7CE8825F2EF6A00C175FC /* bench_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E7CE8725F2EF6A00C175FC /* bench_UITests.swift */; };
 		DA00FC8E1D5EEB0D009AABC8 /* MGLAttributionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = DA00FC8C1D5EEB0D009AABC8 /* MGLAttributionInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA00FC8F1D5EEB0D009AABC8 /* MGLAttributionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = DA00FC8C1D5EEB0D009AABC8 /* MGLAttributionInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1059,6 +1061,8 @@
 		D717FE7925F1955A0054E06E /* iosapp_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosapp_UITests.swift; sourceTree = "<group>"; };
 		D717FE7B25F1955A0054E06E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D717FECA25F19F520054E06E /* XCTestCase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extensions.swift"; sourceTree = "<group>"; };
+		D718328D268A3E190022AF69 /* style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = style.json; path = "issue-100/style.json"; sourceTree = "<group>"; };
+		D7183290268A3EF20022AF69 /* zurich_switzerland.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; path = zurich_switzerland.mbtiles; sourceTree = "<group>"; };
 		D7E1154C25F4A8B50064246D /* iosapp_TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = iosapp_TestPlan.xctestplan; sourceTree = "<group>"; };
 		D7E7CE8525F2EF6A00C175FC /* bench UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bench UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E7CE8725F2EF6A00C175FC /* bench_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bench_UITests.swift; sourceTree = "<group>"; };
@@ -1745,6 +1749,8 @@
 		DA1DC9411CB6C1C2006E619F = {
 			isa = PBXGroup;
 			children = (
+				D718328D268A3E190022AF69 /* style.json */,
+				D7183290268A3EF20022AF69 /* zurich_switzerland.mbtiles */,
 				1F7839A5235E137000D4D606 /* sideload_sat.db */,
 				402E9DE21CD3A56500FD4519 /* Playground */,
 				DA1DC94C1CB6C1C2006E619F /* Demo App */,
@@ -2880,12 +2886,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D718328F268A3E300022AF69 /* style.json in Resources */,
 				DD4823771D94AE6C00EB71B7 /* numeric_filter_style.json in Resources */,
 				A4F3FB1D2254865900A30170 /* missing_icon.json in Resources */,
 				DA1DC9701CB6C6CE006E619F /* points.geojson in Resources */,
 				353BAEF61D646370009A8DA9 /* amsterdam.geojson in Resources */,
 				DA1DC9711CB6C6CE006E619F /* polyline.geojson in Resources */,
 				DD4823761D94AE6C00EB71B7 /* line_filter_style.json in Resources */,
+				D7183291268A3EF20022AF69 /* zurich_switzerland.mbtiles in Resources */,
 				076171C72141A91700668A35 /* Settings.bundle in Resources */,
 				DA821D071CCC6D59007508D4 /* Main.storyboard in Resources */,
 				DA1DC9731CB6C6CE006E619F /* threestates.geojson in Resources */,
