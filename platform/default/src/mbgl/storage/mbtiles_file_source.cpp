@@ -276,6 +276,7 @@ private:
 
     // Multiple databases open simultaneoulsy, to effectively support multiple .mbtiles maps
     mapbox::sqlite::Database &get_db(const std::string &path) {
+        close_db(path);
         auto ptr = db_cache.find(path);
         if (ptr != db_cache.end()) {
             return ptr->second;
