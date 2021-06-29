@@ -277,6 +277,14 @@ CLLocationCoordinate2D randomWorldCoordinate() {
     // Display a secondary map on any connected external display.
     // https://developer.apple.com/documentation/uikit/windows_and_screens/displaying_content_on_a_connected_screen?language=objc
     self.helperWindows = [NSMutableArray array];
+    
+    // Obtain sample MBTiles from: `wget https://github.com/maptiler/tileserver-gl/releases/download/v1.3.0/zurich_switzerland.mbtiles`
+    NSData *jsonStyles = [self mbtilesStyleJSONWithFilenames:@"zurich_switzerland"];
+    NSURL *styleURL = [self writeMbtilesToCreatePath:jsonStyles];
+    if (styleURL) {
+            self.mapView.styleURL = styleURL;
+     }
+    
     [[NSNotificationCenter defaultCenter] addObserverForName:UIScreenDidConnectNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
         UIScreen *helperScreen = note.object;
         UIWindow *helperWindow = [[UIWindow alloc] initWithFrame:helperScreen.bounds];
@@ -2393,6 +2401,69 @@ CLLocationCoordinate2D randomWorldCoordinate() {
     self.reuseQueueStatsEnabled = currentState.reuseQueueStatsEnabled;
 
     self.currentState = currentState;
+}
+
+- (NSURL *)writeMbtilesToCreatePath:(NSData *)jsonData {
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents directory
+    
+    NSString *styleURL = [documentsDirectory stringByAppendingPathComponent:@"mbtileStyle.json"];
+    BOOL succeed = [jsonData writeToFile:styleURL atomically:YES];
+    if (succeed){
+        
+        styleURL = [@"file:///" stringByAppendingString:styleURL];
+        return [NSURL URLWithString:styleURL];
+    }
+    
+    return nil;
+}
+
+- (NSData *)mbtilesStyleJSONWithFilenames:(NSString *)filename {
+    
+    // Style Path
+    NSString *masterStyles = [[NSBundle mainBundle] pathForResource:@"style" ofType:@"json"];
+    if (DEBUG) {
+        NSLog(@"Mapbox Style: %@", masterStyles);
+    }
+    
+    // Create dictionary of style JSON
+    NSError *error = nil;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:masterStyles] options:NSJSONReadingAllowFragments error:&error];
+    if (error) {
+        NSLog(@"Load Style JSON Error: %@", error);
+    }
+    
+    // JSON Source
+    NSMutableDictionary *mutableJson = [json mutableCopy];
+    NSMutableDictionary *sources = [[NSMutableDictionary alloc] init];
+    
+    /// .mbtiles File paths
+    NSString *databasePath = [[NSBundle mainBundle] pathForResource:filename ofType:@"mbtiles"];;
+  
+    // Create the mbtiles json
+    NSMutableDictionary *openMapTilesSource = [[NSMutableDictionary alloc] init];
+    openMapTilesSource[@"url"] = [NSString stringWithFormat:@"mbtiles://%@", databasePath];
+    openMapTilesSource[@"type"] = @"vector";
+    openMapTilesSource[@"maxzoom"] = @(14);
+    
+    // Update Sources
+    sources[@"openmaptiles"] = openMapTilesSource;
+    
+    // Update Mutable Layers
+    mutableJson[@"layers"] = json[@"layers"];
+    
+    // Update sources
+    mutableJson[@"sources"] = sources;
+    
+    if (!mutableJson) {
+        return nil;
+    }
+    NSError *error2;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:mutableJson options:NSJSONWritingPrettyPrinted error:&error2];
+    
+    return jsonData;
+    
 }
 
 @end
