@@ -989,7 +989,7 @@ public:
 
 - (void)renderSync
 {
-    if ( ! self.dormant && _rendererFrontend)
+    if (!self.dormant && _rendererFrontend && !CGRectIsEmpty(self.frame))
     {
         _rendererFrontend->render();
     }
@@ -4382,7 +4382,7 @@ public:
     newAnnotationContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     newAnnotationContainerView.contentMode = UIViewContentModeCenter;
     [newAnnotationContainerView addSubviews:annotationViews];
-    [_mbglView->getView() insertSubview:newAnnotationContainerView atIndex:0];
+    [_mbglView->getView() insertSubview:newAnnotationContainerView atIndex:1];
     self.annotationContainerView = newAnnotationContainerView;
     
     [self updatePresentsWithTransaction];
@@ -6466,7 +6466,9 @@ public:
         return;
     }
 
+#ifdef MBGL_ENABLE_MAP_SNAPSHOTS
     [self queueBackgroundSnapshot];
+#endif
 
     if ([self.delegate respondsToSelector:@selector(mapViewDidBecomeIdle:)]) {
         [self.delegate mapViewDidBecomeIdle:self];
